@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <!-- appCategory="game": Android Auto only runs "parked apps" (regular Activities on the car
+         screen, Android 15+) for the game category. Sideloaded apps also need
+         Android Auto > Developer settings > Unknown sources. -->
+    <application
+        android:allowBackup="false"
+        android:appCategory="game"
+        android:hardwareAccelerated="true"
+        android:icon="@drawable/ic_car_icon"
+        android:label="@string/app_name"
+        android:usesCleartextTraffic="true">
+
+        <activity
+            android:name=".BrowserActivity"
+            android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize|density|keyboard|keyboardHidden|navigation|uiMode"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:launchMode="singleTop"
+            android:resizeableActivity="true"
+            android:theme="@android:style/Theme.DeviceDefault.NoActionBar"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+                <!-- Shows the app in the Android Auto launcher and runs this Activity on the car display. -->
+                <category android:name="android.intent.category.CAR_LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>
